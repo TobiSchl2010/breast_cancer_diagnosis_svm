@@ -9,9 +9,9 @@ dependencies = [
   "ipykernel",
   "numpy",
   "pandas",
-  "scikit-learn",
   "matplotlib",
   "seaborn",
-  "joblib"
+  "joblib", 
+  "scikit-learn"
 ]
 
