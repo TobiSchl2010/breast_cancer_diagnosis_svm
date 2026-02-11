@@ -1,0 +1,17 @@
+[project]
+name = "breast_cancer_svm"
+version = "0.1.0"
+description = "SVM model for the Breast Cancer Wisconsin dataset"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10"
+
+dependencies = [
+  "ipykernel",
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "matplotlib",
+  "seaborn",
+  "joblib"
+]
+

@@ -1,0 +1,77 @@
+# ==================================================
+# .gitignore for Machine Learning Project (Python + uv + VS Code)
+# ==================================================
+
+# --- Python Bytecode / Cache ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# --- Virtual Environments ---
+.venv/
+env/
+venv/
+.env/
+
+# --- uv / Poetry / Pipenv ---
+uv.lock
+poetry.lock
+Pipfile
+Pipfile.lock
+
+# --- IDE / Editor files ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Jupyter Notebooks ---
+.ipynb_checkpoints/
+
+# --- Logs & Temp files ---
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# --- OS / System files ---
+.DS_Store
+Thumbs.db
+
+# --- Data folders (often large or private) ---
+data/raw/
+data/processed/
+data/external/
+
+# --- Model artifacts ---
+models/
+*.pkl
+*.joblib
+*.h5
+*.ckpt
+*.onnx
+
+# --- Output / Reports / Figures ---
+outputs/
+reports/
+plots/
+figures/
+
+# --- Test / Coverage artifacts ---
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+
+# --- Build artifacts ---
+build/
+dist/
+*.egg-info/
+
+# --- Misc ---
+*.tar.gz
+*.zip
+*.npy
+*.npz
