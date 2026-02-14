@@ -4,20 +4,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-import sys
-
-sys.path.append("..")
-from project_paths import get_project_root
+from .project_paths import get_project_root
 
 
 def learning_curve_plot(
     model,
+    model_name,
     X_train,
     y_train,
     n_splits=5,
     train_sizes=np.linspace(0.05, 1.0, 40),
     scoring="f1_macro",
-    index=1,
 ):
     """
     Plots the learning curve for a given machine learning model on the training dataset.
@@ -96,13 +93,13 @@ def learning_curve_plot(
     )
 
     plt.xlabel("Training set size")
-    plt.ylabel("")
+    plt.ylabel("Score")
     plt.grid()
     plt.legend(loc="upper right")
     plt.ylim(0.7, 1.05)
-    plt.title("Learning Curve (LinearSVC on Breast Cancer Dataset)")
+    plt.title(f"Learning Curve ({model_name} on Breast Cancer Dataset)")
     project_path = get_project_root()
     os.chdir(project_path)
-    plt.savefig(f"outputs/plots/learning_curve_{index}.png", dpi=300)
+    plt.savefig(f"outputs/plots/learning_curve_{model_name}.png", dpi=300)
 
     plt.show()

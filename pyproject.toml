@@ -11,7 +11,7 @@ dependencies = [
   "pandas",
   "matplotlib",
   "seaborn",
-  "joblib", 
-  "scikit-learn"
+  "joblib",
+  "scikit-learn",
 ]
 
