@@ -81,7 +81,13 @@ def learning_curve_plot(
     cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
 
     train_sizes, train_scores, valid_scores = learning_curve(
-        model, X_train, y_train, train_sizes=train_sizes, cv=cv, scoring=scoring
+        model,
+        X_train,
+        y_train,
+        train_sizes=train_sizes,
+        cv=cv,
+        scoring=scoring,
+        n_jobs=-1,
     )
 
     train_mean_scores = train_scores.mean(axis=1)
