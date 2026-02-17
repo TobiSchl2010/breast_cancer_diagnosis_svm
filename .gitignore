@@ -75,3 +75,5 @@ dist/
 *.zip
 *.npy
 *.npz
+
+/upcoming_tasks.docx
