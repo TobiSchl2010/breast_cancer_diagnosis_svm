@@ -59,7 +59,7 @@ breast_cancer_diagnosis_project/
 ## Installation & Usage
 
 
-#1. Clone the repository
+1. Clone the repository
 ```bash
 git clone https://github.com/TobiSchl2010/breast_cancer_diagnosis_svm.git
 cd breast_cancer_diagnosis_svm ```
@@ -71,7 +71,7 @@ poetry install
 poetry shell 
 
 # 4. Verify installation (optional)
-python -c "import sklearn, numpy, matplotlib, joblib"
+python -c import numpy, pandas, matplotlib, seaborn, joblib, sklearn
 ```
 
 --- Usage via Notebook ---
@@ -112,7 +112,7 @@ python src/models/evaluate_svm.py
 ```
 Loads the trained model, evaluates on test set, displays confusion matrix
 
-# Predict a new sample
+Predict a new sample
 ```bash
 python src/models/predict_svm.py
 
