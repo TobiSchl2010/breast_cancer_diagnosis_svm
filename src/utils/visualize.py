@@ -1,10 +1,62 @@
+import math
+import seaborn as sns
 from sklearn.model_selection import StratifiedKFold
 from sklearn.model_selection import learning_curve
 import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+from .statistics import freedman_diaconis_bins
 from .project_paths import get_project_root
+
+
+def plot_feature_distributions(df, cols_per_row=3):
+    """
+    Plots histograms for all columns in a DataFrame to visualize feature distributions.
+
+    Parameters:
+    -----------
+    df : pandas.DataFrame
+        The input DataFrame containing numerical features to be plotted.
+
+    Functionality:
+    --------------
+    - Automatically calculates the number of rows and columns for subplots based on the
+      number of features (3 plots per row).
+    - Uses the Freedman-Diaconis rule to determine the number of bins for each histogram.
+    - Plots each feature as a histogram with Seaborn's histplot.
+    - Unused subplot axes (if any) are hidden.
+    - Displays all plots in a neatly arranged layout.
+
+    Example:
+    --------
+    >>> import pandas as pd
+    >>> df = pd.DataFrame({'A': [1,2,3], 'B': [4,5,6]})
+    >>> plot_feature_distributions(df)
+    """
+    n_cols = len(df.columns)
+    cols_per_row = cols_per_row  # number of plots per row
+    rows = math.ceil(n_cols / cols_per_row)
+
+    fig, axes = plt.subplots(rows, cols_per_row, figsize=(5 * cols_per_row, 4 * rows))
+    axes = axes.flatten()  # flatten in case of multiple rows
+
+    for i, col in enumerate(df.columns):
+        bins = freedman_diaconis_bins(df[col])
+        sns.histplot(df[col], ax=axes[i], bins=bins, color="skyblue")
+        axes[i].set_title(col, fontsize=12)
+        axes[i].tick_params(axis="both", labelsize=10)
+
+    # Hide any unused axes if n_cols < rows*cols_per_row
+    for j in range(n_cols, len(axes)):
+        axes[j].axis("off")
+
+    plt.tight_layout()
+
+    project_path = get_project_root()
+    os.chdir(project_path)
+    plt.savefig("outputs/plots/feature_distributions.png", dpi=300)
+    plt.show()
 
 
 def learning_curve_plot(
